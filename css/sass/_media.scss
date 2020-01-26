@@ -1,0 +1,145 @@
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+
+  // upper bar
+  .upper-bar {
+    .col-sm {
+      text-align: left !important;
+      margin: 10px 0 !important;
+    }
+  }
+
+  // slider
+  .slider {
+    .carousel-inner {
+      h1 {
+        text-align: center !important;
+        left: 0 !important;
+        max-width: 100% !important;
+        font-size: 40px !important;
+        margin: 0 8px !important;
+        line-height: 1.4 !important;
+      }
+    }
+  }
+
+  // overview section
+  .overview {
+    h1 {
+      font-size: 30px !important;
+    }
+
+    p {
+      font-size: 16px !important;
+      text-align: justify !important;
+    }
+
+    h4 {
+      margin: 20px 0 30px !important;
+      font-size: 20px;
+    }
+  }
+
+  // featured work
+  .featured-work {
+    padding-bottom: 0 !important;
+
+    h1 {
+      font-size: 35px !important;
+    }
+
+    p {
+      width: 100% !important;
+    }
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .slider {
+    .carousel-inner {
+      h1 {
+        font-size: 50px !important;
+        text-align: center;
+        max-width: 100%;
+        left: 0 !important;
+      }
+    }
+  }
+
+  .overview {
+    h1 {
+      font-size: 40px !important;
+    }
+  }
+
+  // featured work
+  .featured-work {
+    padding-bottom: 0 !important;
+
+    p {
+      width: 100% !important;
+    }
+
+    ul {
+      display: none;
+    }
+
+    .portoflio {
+      display: none;
+    }
+  }
+
+  // latest posts
+  .latest-posts {
+    padding-top: 20px !important;
+
+    p {
+      width: 100% !important;
+    }
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .slider {
+    .carousel-inner {
+      h1 {
+        font-size: 55px !important;
+        text-align: center;
+        left: 0 !important;
+      }
+    }
+  }
+  //contact us
+  .contact-us{
+    p{
+      font-size: 15px !important;
+      letter-spacing: 1px !important;
+    }
+    a{
+      font-size: 16px !important;
+      font-weight: normal !important;
+    }
+  }
+
+  // pricing tables
+  .pricing-tables {
+    .card {
+      .card-body {
+        .card-title {
+          font-size: 25px !important;
+        }
+        .card-header{
+          font-size: 28px !important;
+        }
+      }
+    }
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199.98px) {}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {}

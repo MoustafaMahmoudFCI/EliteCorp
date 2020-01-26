@@ -1,0 +1,570 @@
+@import 'media.scss';
+
+$mainColor: #08526d;
+$secondColor: #c0392b;
+$grayColor: #909090;
+$whiteColor: #ffffff;
+$mainFontSize: 16px;
+$mainFont: 'Merriweather', serif;
+$headingFont: 'Oswald', sans-serif;
+$browserPrefixer: webkit, moz, o;
+
+/*------------ mixin to include---------------*/
+@mixin overlay($top, $right, $bottom, $left, $width, $height, $backColor) {
+  content: "";
+  z-index: 2;
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  width: $width;
+  height: $height;
+  background-color: $backColor;
+}
+@mixin prefixer($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    #{'-'+$prefix+'-'+$property}: $value;
+  }
+  #{$property}: $value;
+}
+/* Classes to extend */
+%cover {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+%carouselIndicators {
+  width: 10px;
+  height: 10px;
+  border: 3px solid $whiteColor;
+  border-radius: 50%;
+  background-color: transparent;
+  opacity: 1;
+}
+%logo {
+  &:first-of-type {
+    color: $mainColor;
+    font-weight: bold;
+  }
+  &:last-of-type {
+    color: $secondColor;
+  }
+}
+%section {
+  padding: 50px 0;
+}
+%paragraph {
+  color: #909090;
+  line-height: 1.7;
+  width: 80%;
+  margin: 0 auto;
+  font-size: $mainFontSize+4;
+}
+body {
+  font-family: $mainFont;
+  overflow-x: hidden;
+}
+h1{
+  font-family: $headingFont;
+}
+/* Start upper-bar*/
+.upper-bar {
+  background-color: $mainColor;
+  color: #bdc3c7;
+  padding: 10px;
+  .get-quote {
+    border: 1px solid $secondColor;
+    color: $whiteColor;
+    text-decoration: none;
+    margin-left: 10px;
+    padding: 2px 5px;
+    @include prefixer(transition, all 0.5s ease-in-out, $browserPrefixer);
+    &:hover {
+      background-color: $secondColor;
+    }
+  }
+}
+
+/* Sart navbar */
+.navbar {
+  .navbar-brand {
+    font-size: $mainFontSize+14;
+    font-family: $headingFont;
+    span {
+      @extend %logo;
+    }
+  }
+  .navbar-nav {
+    .nav-link {
+      font-size: $mainFontSize;
+      text-transform: uppercase;
+      margin-left: 20px;
+      color: $mainColor;
+      @include prefixer(transition, all 0.5s ease-in-out, $browserPrefixer);
+      &:hover {
+        color: $secondColor;
+      }
+    }
+    .active > .nav-link {
+      color: $secondColor;
+    }
+  }
+}
+
+/* start slider */
+.slider {
+  position: relative;
+  .carousel-inner {
+    @extend %cover;
+    display: flex;
+    align-items: center;
+    h1 {
+      position: absolute;
+      z-index: 3;
+      color: $whiteColor;
+      font-family: $mainFont;
+      font-size: ($mainFontSize * 3) + 10;
+      max-width: 800px;
+      line-height: 1.6;
+      left: 100px;
+      text-transform: capitalize;
+      span {
+        background-color: $secondColor;
+        padding: 2px 10px;
+        border-radius: 5px;
+      }
+    }
+    .overlay {
+      @include overlay(0, 0, 0, 0, 100%, 100%, rgba(8, 82, 109, 0.7));
+    }
+    .carousel-1 {
+      background-image: url("../../img/slider/people-brasil-guys-avpaulista-109919.jpg");
+    }
+    .carousel-2 {
+      background-image: url("../../img/slider/working-in-a-group-6224.jpg");
+    }
+    .carousel-3 {
+      background-image: url("../../img/slider/notebook-beside-the-iphone-on-table-196644.jpg");
+    }
+  }
+  .carousel-indicators {
+    li {
+      @extend %carouselIndicators;
+    }
+    .active {
+      background-color: $whiteColor;
+    }
+  }
+}
+
+/* start features section */
+.features {
+  @extend %section;
+  h3 {
+    text-transform: capitalize;
+    color: $mainColor;
+    font-size: $mainFontSize + 6;
+  }
+  .svg-inline--fa {
+    background-color: $secondColor;
+    color: $whiteColor;
+    padding: 10px;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+  }
+  p {
+    color: $grayColor;
+  }
+}
+
+/* start company overview section */
+.overview {
+  @extend %section;
+  background-color: #f0f5f7;
+  h1 {
+    color: $mainColor;
+    font-weight: bold;
+  }
+  p {
+    @extend %paragraph;
+  }
+  h4 {
+    letter-spacing: 0.2em;
+    color: $grayColor;
+    margin: 20px 0 40px;
+    font-weight: normal;
+  }
+  button {
+    background-color: $secondColor;
+    color: $whiteColor;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    border: 0;
+    @include prefixer(transition, all 0.4s ease-in-out, $browserPrefixer);
+    &:hover {
+      background-color: $mainColor;
+    }
+  }
+}
+
+/* start featured work */
+.featured-work {
+  @extend %section;
+  h1 {
+    color: $mainColor;
+    font-weight: bold;
+  }
+  p {
+    @extend %paragraph;
+  }
+  ul {
+    list-style: none;
+    li {
+      border: 2px solid $mainColor;
+      color: $mainColor;
+      padding: 5px 10px;
+      margin: 5px 12px;
+      border-radius: 5px;
+      font-size: $mainFontSize + 2;
+      text-transform: capitalize;
+      @include prefixer(transition, all 0.4s ease-in-out, $browserPrefixer);
+      cursor: pointer;
+      &.active,
+      &:hover {
+        background-color: $secondColor;
+        color: $whiteColor;
+        border: 2px solid $secondColor;
+        border-radius: 5px;
+      }
+    }
+  }
+  .portoflio {
+    overflow: hidden;
+    .col-md-3 {
+      padding: 0;
+      h6{
+        position: absolute;
+        top:50%;
+        left: 50%;
+        display: none;
+        z-index: 999;
+        font-size: 20px;
+        color:#fff;
+        transition-delay: 1s;
+        @include prefixer(transition, display 1.5s ease-in-out , $browserPrefixer );
+       
+      }
+      position: relative;
+      &:hover .overlay:before {
+        cursor: pointer;
+        @include prefixer(transform, scale(1), $browserPrefixer);
+      }
+      &:hover{
+        h6{
+          display: block;
+        }
+      }
+      img {
+        width: 100%;
+      }
+      .overlay {
+        &:before {
+          @include overlay(0, 0, 0, 0, 100%, 100%, rgba(31, 82, 109, 0.8));
+          @include prefixer(transform, scale(0), $browserPrefixer);
+          @include prefixer(
+            transition,
+            transform 0.5s ease-in-out,
+            $browserPrefixer
+          );
+        }
+      }
+    }
+  }
+}
+
+/*start latest posts */
+.latest-posts {
+  @extend %section;
+  h1 {
+    color: $mainColor;
+  }
+  .post {
+    @extend %paragraph;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  .card {
+    margin-bottom: 20px;
+    .card-body {
+      .card-title {
+        color: $mainColor;
+      }
+      .card-text {
+        color: $grayColor;
+        text-align: justify;
+      }
+      .card-link {
+        color: $secondColor;
+        font-weight: bold;
+        @include prefixer(transition, all 0.4s ease-in-out, $browserPrefixer);
+        &:hover {
+          color: $mainColor;
+        }
+      }
+    }
+  }
+}
+
+/* start testimonials */
+.testimonials {
+  @extend %cover;
+  background: url("../../img/testimonials/people-brasil-guys-avpaulista-109919.jpg")
+    no-repeat center center fixed;
+  position: relative;
+  .overlay {
+    @include overlay(0, 0, 0, 0, 100%, 100%,rgba(8, 82, 109, 0.8));
+  }
+  .carousel-inner {
+    z-index: 5;
+    .carousel-item {
+      .carousel-caption {
+        position: absolute;
+        top: 50%;
+        margin-top: -180px;
+        img {
+          width: 150px;
+          height: 150px;
+        }
+        p {
+          font-size: $mainFontSize +2;
+          color: #f0f0f0;
+        }
+      }
+    }
+  }
+  .carousel-control-next,
+  .carousel-control-prev {
+    z-index: 6;
+    background-color: #007bff;
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    margin: 0 50px;
+    border-radius: 5px;
+    @include prefixer(transition, all 0.4s ease-in-out, $browserPrefixer);
+    &:hover {
+      background-color: $secondColor;
+    }
+  }
+  .carousel-indicators {
+    li {
+      @extend %carouselIndicators;
+    }
+    .active {
+      background-color: $whiteColor;
+    }
+  }
+}
+
+/* start pricing tables */
+.pricing-tables {
+  @extend %section;
+  background-color: #f7f7f7;
+  h1 {
+    color: $mainColor;
+    font-weight: 600;
+  }
+  p {
+    font-size: $mainFontSize + 4;
+    line-height: 1.8;
+    color: $grayColor;
+  }
+  .spec-card {
+    top: -12px !important;
+  }
+  .card {
+    margin-bottom: 20px;
+    .card-body {
+      padding: 25px 0;
+      .card-title {
+        font-size: $mainFontSize + 12;
+        color: $mainColor;
+        font-weight: bold;
+        text-transform: capitalize;
+      }
+      .card-header {
+        background-color: #f7f7f7;
+        color: $mainColor;
+        font-size: $mainFontSize + 14;
+        font-weight: bold;
+        border: 0;
+      }
+      .list-group-item {
+        border: 0;
+      }
+      .card-link {
+        background-color: $secondColor;
+        color: $whiteColor;
+        padding: 10px 30px;
+        @include prefixer(transition, all 0.3s ease-in-out, $browserPrefixer);
+        text-transform: uppercase;
+        display: inline-block;
+        &:hover {
+          cursor: pointer;
+          background-color: $mainColor;
+        }
+      }
+
+      .corp {
+        background-color: $secondColor !important;
+        color: $whiteColor !important;
+      }
+      .spec-link {
+        background-color: $mainColor !important;
+        &:hover {
+          background-color: $secondColor !important;
+        }
+      }
+    }
+  }
+}
+
+/* start choose us */
+.choose-us {
+  .col-md-6 {
+    padding: 0;
+    &:last-child {
+      background-color: $mainColor;
+      color: $whiteColor;
+      h1 {
+        padding: 40px 0 20px;
+      }
+      p {
+        font-size: $mainFontSize + 2;
+        padding: 0 20px;
+        line-height: 1.7;
+      }
+      a {
+        background-color: $secondColor;
+        color: $whiteColor;
+        padding: 10px 30px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: $mainFontSize + 4;
+        font-weight: bold;
+        display: inline-block;
+        margin: 20px 0 10px;
+        @include prefixer(transition, all 0.4s ease-in-out, $browserPrefixer);
+        &:hover {
+          cursor: pointer;
+          background-color: #d35400;
+        }
+      }
+    }
+  }
+}
+
+/* start statistics */
+.stats {
+  @extend %section;
+  color: $mainColor;
+  p {
+    color: $secondColor;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  span {
+    font-size: $mainFontSize + 24;
+    font-weight: bold;
+  }
+}
+
+/* contact us section */
+.contact-us {
+  @extend %section;
+  background-color: $secondColor;
+  color: $whiteColor;
+  font-size: $mainFontSize + 4;
+  p{
+    letter-spacing: 1.5px;
+    margin-top: 10px;
+  }
+  a {
+    color: $whiteColor;
+    border: 2px solid;
+    padding: 10px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 1.2px;
+  }
+}
+
+/* start site info */
+.site-info {
+  @extend %section;
+  h3 {
+    color: $mainColor;
+  }
+  a {
+    color: $mainColor;
+    text-decoration: none;
+    @include prefixer(transition, all 0.4s ease-in-out, $browserPrefixer);
+    &:hover {
+      color: $secondColor;
+    }
+  }
+  .info {
+    padding: 0 20px;
+    span {
+      @extend %logo;
+    }
+    p {
+      color: $grayColor;
+      text-align: justify;
+      margin-top: 20px;
+    }
+    a {
+      font-weight: bold;
+    }
+  }
+  li {
+    text-transform: capitalize;
+  }
+  .links {
+    padding-left: 30px;
+    li {
+      margin-top: 10px;
+    }
+  }
+  .contact {
+    padding-left: 30px;
+    span {
+      font-weight: bold;
+    }
+    li {
+      margin-top: 20px;
+    }
+  }
+}
+
+/*start footer*/
+footer {
+  background-color: #f7f7f7;
+  padding: 30px 0;
+  border-top: 2px solid #dadada;
+  color: $grayColor;
+  a {
+    color: $grayColor;
+    font-size: $mainFontSize;
+    padding-left: 20px;
+    &:hover {
+      text-decoration: none;
+      color: $mainColor;
+    }
+  }
+}
