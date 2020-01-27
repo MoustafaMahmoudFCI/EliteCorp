@@ -12,8 +12,8 @@ $(function(){
     $('.featured-work ul li').on('click' , function(){
         $(this).addClass('active').siblings().removeClass('active');
     });
-    // trigger mixitup plugin (shuffle portoflio images)
-    var mixer = mixitup('.featured-work .portoflio');
+    // trigger mixitup plugin (shuffle portflio images)
+    var mixer = mixitup('.featured-work .portflio');
 
     // trigger counterup plugin 
     $('[data-toggle = counter-up]').counterUp({
